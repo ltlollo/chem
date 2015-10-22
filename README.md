@@ -1,2 +1,2 @@
 # chem
-balance chemical equations
+balance chemical equations, written just as an exercise
