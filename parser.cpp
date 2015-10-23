@@ -33,6 +33,9 @@ parse_formula(const char *stream, std::vector<std::vector<Elem>> &res) {
             res.push_back(move(comp));
             return 0;
         case ARROW:
+            if (!lhs) {
+                return -1;
+            }
             lhs = false;
         case PLUS:
             if (comp.empty()) {
