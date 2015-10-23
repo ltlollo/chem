@@ -7,3 +7,6 @@ OOPTS = -Ofast -mtune=native -fno-rtti -DNDEBUG -s -fno-exceptions \
 
 all:
 	${CC} ${NEC} ${OOPTS} chem.cpp parser.cpp -o ${BIN}
+
+clean:
+	rm -f ${BIN}
