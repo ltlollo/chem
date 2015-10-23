@@ -90,7 +90,10 @@ solve(const mat_t<Elem> &form, std::vector<T> &res) {
             mat[i][j] *= p;
         }
     }
-    res = std::vector<T>(cols, 0);
+    res.resize(cols);
+    for (auto &e: res) {
+        e = 0;
+    }
     for (std::size_t i = mat.size(); i; --i) {
         auto cur = i-1;
         if (i == mat.size()) {
