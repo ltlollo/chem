@@ -76,7 +76,7 @@ solve(const mat_t<Elem> &form, std::vector<T> &res) {
             return !e;
         });
     }), mat.end());
-    if (mat.empty()) {
+    if (mat.empty() || mat.size() != cols-1) {
         return -1;
     }
     T acc = 1;
@@ -106,7 +106,9 @@ solve(const mat_t<Elem> &form, std::vector<T> &res) {
         }
         res[cur] /= mat[cur][cur];
     }
-    if (std::any_of(res.begin(), res.end(), [](const auto e) { return !e; })) {
+    if (std::any_of(res.begin(), res.end(), [](const auto e) {
+            return e <= 0;
+        })) {
         return -1;
     }
     auto p = gcd(res);
